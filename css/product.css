@@ -445,7 +445,7 @@
 }
 
 /* ========================================
-   SEARCH BAR
+   SEARCH BAR (STABLE VERSION)
    ======================================== */
 .search-bar {
   flex: 1;
@@ -453,82 +453,60 @@
   position: relative;
 }
 
-.search-bar::before {
-  content: '';
-  position: absolute;
-  inset: -2px;
-  background: linear-gradient(135deg, 
-    rgba(212, 175, 55, 0.3), 
-    rgba(139, 111, 71, 0.2)
-  );
-  border-radius: 52px;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  z-index: -1;
-}
-
-.search-bar:hover::before,
-.search-bar:focus-within::before {
-  opacity: 1;
-}
-
 .search-bar input {
   width: 100%;
-  padding: 1.1rem 1.5rem 1.1rem 3.8rem;
+  padding: 1rem 1.5rem 1rem 3.5rem;
   border: 2px solid rgba(212, 175, 55, 0.4);
   border-radius: 50px;
   font-size: 1rem;
   font-family: 'Playfair Display', serif;
-  transition: all 0.4s ease;
-  background: linear-gradient(135deg, 
-    rgba(26, 26, 26, 0.95), 
+  background: linear-gradient(135deg,
+    rgba(26, 26, 26, 0.95),
     rgba(42, 32, 20, 0.9)
   );
   color: #f5e6d2;
-  box-shadow: 
-    inset 0 2px 8px rgba(0, 0, 0, 0.4),
-    0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: background 0.3s ease, border-color 0.3s ease;
+  box-sizing: border-box; 
 }
 
 .search-bar input::placeholder {
   color: rgba(212, 175, 55, 0.5);
-  font-weight: 400;
   letter-spacing: 0.5px;
 }
 
 .search-bar input:focus {
-  outline: none;
+  outline: 3px solid rgba(212, 175, 55, 0.4); 
+  outline-offset: 2px;
   border-color: rgba(212, 175, 55, 0.8);
-  background: linear-gradient(135deg, 
-    rgba(26, 26, 26, 1), 
+  background: linear-gradient(135deg,
+    rgba(26, 26, 26, 1),
     rgba(42, 32, 20, 0.95)
   );
-  box-shadow: 
-    inset 0 2px 8px rgba(0, 0, 0, 0.5),
-    0 0 0 4px rgba(212, 175, 55, 0.15),
-    0 8px 20px rgba(212, 175, 55, 0.2);
-  transform: translateY(-3px);
   color: #fff;
 }
 
-.search-bar:focus-within .search-icon {
-  transform: translateY(-50%) scale(1.1);
-  filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.6));
+.search-icon {
+  position: absolute;
+  left: 1.4rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+  opacity: 0.8;
 }
 
-.search-bar:focus-within .search-icon img {
-  opacity: 1; /* Add this */
-}
-
-/* ========================================
-   SORT DROPDOWN
-   ======================================== */
+/* ==============
+   SORT DROPDOWN 
+   ==============*/
 .sort-wrapper {
   position: relative;
-  display: inline-block;
+  flex: 0 0 220px;         
+  max-width: 220px;
 }
 
-  .sort-dropdown {
+.sort-dropdown {
+  width: 100%;
   padding: 1.1rem 2.5rem 1.1rem 1.8rem;
   border: 2px solid rgba(212, 175, 55, 0.4);
   border-radius: 50px;
@@ -540,15 +518,19 @@
   );
   color: #f5e6d2;
   cursor: pointer;
-  transition: all 0.4s ease;
   font-weight: 500;
   letter-spacing: 0.5px;
+  appearance: none;
+  box-sizing: border-box;  
+
   box-shadow: 
     inset 0 2px 8px rgba(0, 0, 0, 0.4),
     0 4px 12px rgba(0, 0, 0, 0.3);
-  position: relative;
-  appearance: none;
-  min-width: 200px;
+
+  transition: 
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .sort-wrapper::after {
@@ -558,20 +540,9 @@
   right: 1.4rem;
   transform: translateY(-50%);
   pointer-events: none;
-
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
   border-top: 7px solid #d4af37;
-}
-
-.sort-dropdown:focus {
-  outline: none;
-  border-color: rgba(212, 175, 55, 0.8);
-  box-shadow: 
-    inset 0 2px 8px rgba(0, 0, 0, 0.5),
-    0 0 0 4px rgba(212, 175, 55, 0.15),
-    0 8px 20px rgba(212, 175, 55, 0.2);
-  transform: translateY(-3px);
 }
 
 .sort-dropdown:hover {
@@ -580,10 +551,18 @@
     rgba(26, 26, 26, 1), 
     rgba(42, 32, 20, 0.95)
   );
-  transform: translateY(-2px);
   box-shadow: 
-    inset 0 2px 8px rgba(0, 0, 0, 0.5),
+    inset 0 0 0 1px rgba(212, 175, 55, 0.4),
+    inset 0 2px 10px rgba(212, 175, 55, 0.15),
     0 6px 16px rgba(212, 175, 55, 0.15);
+}
+
+.sort-dropdown:focus {
+  outline: 3px solid rgba(212, 175, 55, 0.4);
+  outline-offset: 2px;
+  box-shadow: 
+    inset 0 2px 10px rgba(212, 175, 55, 0.2),
+    0 6px 18px rgba(212, 175, 55, 0.2);
 }
 
 .sort-dropdown option {
@@ -860,11 +839,23 @@
     font-size: 0.95rem;
   }
 
+  .sort-wrapper {
+    width: 100%;
+    max-width: 100%;
+    flex: 1 1 100%;
+  }
+
   .sort-dropdown {
     width: 100%;
-    min-width: unset;
-    padding: 1rem 2.5rem 1rem 1.5rem;
+    max-width: 100%;
+    min-width: 0;             
+    padding: 1rem 3rem 1rem 1.4rem; 
     font-size: 0.95rem;
+    box-sizing: border-box;
+  }
+
+  .sort-wrapper::after {
+    right: 1.2rem;             
   }
 
   .category-tabs {
@@ -932,13 +923,25 @@
   }
 
   .search-bar input,
-  .sort-dropdown,
   .category-tab {
     font-size: 0.85rem;
   }
 
   .category-tab {
     padding: 0.7rem 1.2rem;
+  }
+
+  .sort-dropdown {
+    padding: 0.9rem 2.8rem 0.9rem 1.2rem;
+    font-size: 0.9rem;
+    border-radius: 40px;
+  }
+
+  .sort-wrapper::after {
+    right: 1rem;
+    border-left-width: 5px;
+    border-right-width: 5px;
+    border-top-width: 6px;
   }
 }
 
