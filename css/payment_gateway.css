@@ -1,0 +1,421 @@
+/* Payment Gateway Styles */
+.payment-gateway-wrapper {
+  max-width: 1600px;
+  margin: 0 auto;
+  background: rgba(0, 0, 0, 0.573);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 1px;
+  padding: 5rem;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.773);
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.payment-gateway-container {
+    max-width: 700px;
+    margin: 2rem auto;
+    padding: 2rem;
+    min-height: 100vh;
+}
+
+.gateway-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+}
+
+.gateway-logo img {
+    max-width: 150px;
+    height: auto;
+}
+
+.secure-badge {
+    background: #235024;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* Payment Details Box */
+.payment-details-box {
+    background: rgba(255, 255, 255, 0.7);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.amount-display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: #f8f9fae3;
+    border-radius: 8px;
+}
+
+.amount-value {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+.order-info {
+    text-align: left;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 2px solid #eee;
+}
+
+/* Bank Selection */
+.bank-selection-box {
+    background: rgba(255, 255, 255, 0.7);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+}
+
+.instruction {
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+.banks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+}
+
+.bank-option {
+    padding: 1.5rem;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.bank-option:hover {
+    border-color: var(--primary-color);
+    background: #f8f9fa;
+    transform: translateY(-2px);
+}
+
+.bank-option.selected {
+    border-color: var(--primary-color);
+    background: #fff8f0;
+    border-width: 3px;
+}
+
+.bank-option img {
+    max-width: 80px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.bank-option span {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+/* QR Code Section */
+.qr-code-section {
+    background: rgba(255, 255, 255, 0.6);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.qr-code-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.qr-code {
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.8);
+    border: 3px solid #ddd;
+    border-radius: 12px;
+    display: inline-block;
+}
+
+.qr-instruction {
+    color: #494949;
+    font-weight: 600;
+}
+
+/* Wallet Options */
+.wallet-options {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+}
+
+.wallet-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.wallet-icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border-radius: 10px;
+    padding: 0.5rem;
+    border: 2px solid #ddd;
+    transition: all 0.3s;
+}
+
+.wallet-icon:hover {
+    transform: scale(1.1);
+    border-color: var(--primary-color);
+}
+
+.wallet-icon img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* Payment Timer - ADD THIS TO payment_gateway.css */
+.payment-timer {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.payment-timer p {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 0.8rem;
+    text-align: center;
+}
+
+#timer {
+    color: #e74c3c;
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.timer-progress {
+    width: 100%;
+    height: 12px;
+    background: #ecf0f1;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid #d5d8dc;
+}
+
+.timer-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #27ae60 0%, #2ecc71 50%, #f39c12 100%);
+    width: 100%;
+    transition: width 1s linear;
+    box-shadow: 0 0 10px rgba(39, 174, 96, 0.5);
+}
+
+/* Payment Status */
+.payment-status {
+    padding: 1.5rem;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.6);
+    border: 2px solid #ffffff;
+    margin: 2rem 0;
+}
+
+.status-icon {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.payment-status.success {
+    background: #d4edda;
+    border-color: #4caf4f;
+}
+
+.payment-status.failed {
+    background: #f8d7da;
+    border-color: #dc3545;
+}
+
+/* Demo Actions */
+.demo-actions {
+    background: #f0f0f0bb;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.btn-simulate-success,
+.btn-simulate-fail {
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    margin: 0.5rem;
+    transition: all 0.3s;
+}
+
+.btn-simulate-success {
+    background: #136b18df;
+    color: white;
+}
+
+.btn-simulate-success:hover {
+    background: #45a049;
+    transform: translateY(-2px);
+}
+
+.btn-simulate-fail {
+    background: #911320b5;
+    color: white;
+}
+
+.btn-simulate-fail:hover {
+    background: #c82333;
+    transform: translateY(-2px);
+}
+
+/* Gateway Actions */
+.gateway-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.btn-cancel,
+.btn-proceed {
+    flex: 1;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-cancel {
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    background: transparent;
+    color: #ffffff;
+}
+
+.btn-cancel:hover {
+    background: rgba(53, 53, 53, 0.237);
+    border-color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #FFD700;
+  border: 2px solid rgba(212, 175, 55, 0.5);
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-secondary:hover {
+  background: rgba(212, 175, 55, 0.1);
+  border-color: #FFD700;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
+}
+
+.btn-proceed {
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    background: rgba(0, 0, 0, 0.412);
+    color: white;
+}
+
+.btn-proceed:hover:not(:disabled) {
+    background: rgb(0, 0, 0);
+    border-color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+}
+
+.btn-proceed:disabled {
+    background: #ccccccce;
+    cursor: not-allowed;
+}
+
+/* Security Notice */
+.security-notice {
+    text-align: center;
+    padding: 1rem;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.security-notice p {
+    color: #ffffff;
+}
+
+.security-notice .secure-note {
+    font-size: 0.85rem;
+    color: #ffffff;
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+    .payment-gateway-container {
+        padding: 1rem;
+    }
+
+    .banks-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .amount-value {
+        font-size: 2rem;
+    }
+
+    .gateway-actions {
+        flex-direction: column;
+    }
+}

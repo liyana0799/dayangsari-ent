@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - DAYANGSARI ENT</title>
+    <link rel="icon" type="image/x-icon" href="asset/favicon.ico">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!--
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-content">
+            <div class="cake">
+                <div class="plate"></div>
+                <div class="layer layer-bottom"></div>
+                <div class="layer layer-middle"></div>
+                <div class="layer layer-top"></div>
+                <div class="icing"></div>
+                <div class="drip drip1"></div>
+                <div class="drip drip2"></div>
+                <div class="drip drip3"></div>
+                <div class="candle">
+                    <div class="flame"></div>
+                </div>
+            </div>
+            <div class="loading-text">Loading delicious treats...</div>
+        </div>
+    </div>-->
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">DAYANGSARI ENT</a>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="product.html">Products</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="myaccount.html">My Account</a></li>
+                <li><a href="cart.html">Cart</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <h1>Checkout</h1>
+        <p>Complete your order</p>
+    </header>
+
+    <!-- Checkout Section -->
+    <div class="checkout-wrapper">
+        <section class="section">
+            <div class="checkout-container">
+            <div class="checkout-left">
+            <h2>Customer Information</h2>
+
+        <div class="form-group">
+            <label>Full Name <span style="color: red;">*</span></label>
+            <input type="text" id="checkoutName" placeholder="Enter your full name" required>
+        </div>
+
+        <div class="form-group">
+            <label>Email <span style="color: red;">*</span></label>
+            <input type="email" id="checkoutEmail" placeholder="Your email" required>
+        </div>
+
+        <div class="form-group">
+        <label>Phone Number <span style="color: red;">*</span></label>
+        <div class="phone-input-container">
+            <div class="phone-prefix">+60</div>
+            <input type="text" id="checkoutPhone" placeholder="123456789" required maxlength="10">
+        </div>
+        <small style="color: #666; font-size: 0.85rem; margin-top: 0.3rem; display: block;">
+            Enter 9-10 digits (e.g., 123456789)
+        </small>
+    </div>
+
+        <h3>Delivery Address</h3>
+        <!-- Saved Addresses Selector -->
+        <div class="saved-addresses-section">
+            <div class="saved-addresses-header">
+                <label>Quick Fill Address</label>
+                <button type="button" class="btn-save-address" onclick="saveCurrentCheckoutAddress()" title="Save current address">
+                    💾 Save This Address
+                </button>
+            </div>
+            
+            <div class="saved-addresses-controls">
+                <select id="savedAddressesDropdown" class="saved-addresses-dropdown">
+                    <option value="">-- Select a saved address --</option>
+                </select>
+                <button type="button" class="btn-use-address" onclick="useSavedAddress()">
+                    Use Address
+                </button>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label>Full Address <span style="color: red;">*</span></label>
+            <input type="text" id="addrLine1" placeholder="House No, Street Name, City" required>
+        </div>
+
+        <div class="address-grid">
+            <div class="form-group">
+                <label>Postcode <span style="color: red;">*</span></label>
+                <input type="text" id="postcode" placeholder="e.g. 94300" required maxlength="5">
+            </div>
+            <div class="form-group">
+                <label>City <span style="color: red;">*</span></label>
+                <input type="text" id="city" placeholder="e.g. Kota Samarahan" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+        <label>State <span style="color: red;">*</span></label>
+        <select id="state" required>
+            <option value="" disabled selected hidden>-- Select State --</option>
+                <option value="sarawak">Sarawak</option>
+                <option value="sabah">Sabah</option>
+                <option value="labuan">Labuan</option>        
+                <option value="johor">Johor</option>
+                <option value="kedah">Kedah</option>
+                <option value="kelantan">Kelantan</option>
+                <option value="melaka">Melaka</option>
+                <option value="negeri-sembilan">Negeri Sembilan</option>
+                <option value="pahang">Pahang</option>
+                <option value="penang">Penang (Pulau Pinang)</option>
+                <option value="perak">Perak</option>
+                <option value="perlis">Perlis</option>
+                <option value="selangor">Selangor</option>
+                <option value="terengganu">Terengganu</option>
+                <option value="kuala-lumpur">Kuala Lumpur (Federal Territory)</option>
+                <option value="putrajaya">Putrajaya (Federal Territory)</option>
+        </select>
+    </div>
+
+        <h3>Payment Method</h3>
+        <div class="payment-options">
+            <label class="payment-card">
+                <input type="radio" name="payment" value="FPX (Online Banking)">
+                <div class="payment-details">
+                    <span class="payment-title">FPX (Online Banking)</span>
+                    <span class="payment-desc">Maybank2u, Public Bank, CIMB, etc.</span>
+                </div>
+            </label>
+
+            <label class="payment-card">
+                <input type="radio" name="payment" value="E-Wallet">
+                <div class="payment-details">
+                    <span class="payment-title">E-Wallet</span>
+                    <span class="payment-desc">Touch 'n Go, GrabPay, DuitNow, etc.</span>
+                </div>
+            </label>
+
+            <label class="payment-card" id="codPaymentCard">
+                <input type="radio" name="payment" value="Cash on Delivery" id="codPaymentRadio">
+                <div class="payment-details">
+                    <span class="payment-title">Cash on Delivery (COD)</span>
+                    <span class="payment-desc">Pay cash upon receiving your order.</span>
+                    <span class="payment-unavailable-msg" id="codUnavailableMsg" style="display: none;">
+                        ⚠️ COD only available in Kuching & Kota Samarahan, Sarawak
+                    </span>
+                </div>
+            </label>
+        </div>
+
+        <h2>Promo Code</h2>
+        <div class="promo-section">
+            <input type="text" id="promoCode" placeholder="Enter promo code">
+            <button class="btn btn-secondary">Apply</button>
+            <p id="promoMessage"></p>
+        </div>
+    </div>
+
+                <!-- Right: Order Summary -->
+                <div class="checkout-right">
+                    <div class="cart-summary">
+                        <h2>Order Summary</h2>
+
+                        <div class="summary-row">
+                            <span>Subtotal:</span>
+                            <span id="subtotal">RM 0.00</span>
+                        </div>
+
+                        <div class="summary-row">
+                            <span>Shipping:</span>
+                            <span id="shipping">RM 0.00</span>
+                        </div>
+
+                        <div class="summary-row">
+                            <span>Promo Code Discount:</span>
+                            <span id="promoDiscount">RM 0.00</span>
+                        </div>
+
+                        <div class="summary-row total">
+                            <span>Total:</span>
+                            <span id="finalTotal">RM 0.00</span>
+                        </div>
+
+                        <button class="btn btn-primary btn-block" type="button" onclick="placeOrder()">
+                            Place Order
+                        </button>
+
+                        <button class="btn btn-secondary btn-block" onclick="window.location.href='cart.html'">
+                            Back to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 DAYANGSARI ENT All Rights Reserved.</p>
+        <p>Created by: TMT3693 WEB APPLICATION DEVELOPMENT G8</p>
+    </footer>
+
+     <!-- ========================================
+     CHATBOT COMPONENT
+     Include this in all your pages using:
+     <div id="chatbot-container"></div>
+     Then load with JavaScript
+     ======================================== -->
+
+     <!-- Chatbot Button -->
+    <button class="chatbot-button" id="chatbotButton" onclick="toggleChatbot()">
+        <span class="chatbot-button-icon">
+            <img src="asset/chatbot.png" alt="Chat" onerror="this.style.display='none'; this.parentElement.innerHTML='💬'">
+        </span>
+        <span class="chatbot-badge" id="chatbotBadge" style="display: none;">1</span>
+    </button>
+
+    <!-- Chatbot Window -->
+    <div class="chatbot-window" id="chatbotWindow">
+        <!-- Header -->
+        <div class="chatbot-header">
+            <div class="chatbot-header-info">
+                <div class="chatbot-avatar">
+                    <img src="asset/cookies.png" alt="Cookie Bot" onerror="this.style.display='none'; this.parentElement.innerHTML='🥮'">
+                </div>
+                <div class="chatbot-title">
+                    <h3>DAYANGSARI Assistant</h3>
+                    <div class="chatbot-status">Online • Ready to help</div>
+                </div>
+            </div>
+            <button class="chatbot-close" onclick="toggleChatbot()">×</button>
+        </div>
+
+        <!-- Messages Area -->
+        <div class="chatbot-messages" id="chatbotMessages">
+            <!-- Messages will be added here dynamically -->
+        </div>
+
+        <!-- Input Area -->
+        <div class="chatbot-input-area">
+            <input 
+                type="text" 
+                class="chatbot-input" 
+                id="chatbotInput" 
+                placeholder="Type your message..."
+                onkeypress="handleChatbotKeypress(event)"
+            >
+            <button class="chatbot-send-btn" onclick="sendChatbotMessage()">
+                ➤
+            </button>
+        </div>
+    </div>
+
+    <!-- All scripts now handled in script.js -->
+    <script type="module" src="firebase-config.js"></script>
+    <script type="module" src="firebase-functions.js"></script>
+    <script type="module" src="script.js"></script>
+
+</body>
+</html>

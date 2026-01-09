@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - DAYANGSARI ENT</title>
+    <link rel="icon" type="image/x-icon" href="asset/favicon.ico">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-content">
+            <div class="cake">
+                <div class="plate"></div>
+                <div class="layer layer-bottom"></div>
+                <div class="layer layer-middle"></div>
+                <div class="layer layer-top"></div>
+                <div class="icing"></div>
+                <div class="drip drip1"></div>
+                <div class="drip drip2"></div>
+                <div class="drip drip3"></div>
+                <div class="candle">
+                    <div class="flame"></div>
+                </div>
+            </div>
+            <div class="loading-text">Loading delicious treats...</div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">DAYANGSARI ENT</a>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="product.html">Products</a></li>
+                <li><a href="about.html" class="active">About Us</a></li>
+                <li><a href="signin.html">Sign In</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <h1>About DAYANGSARI ENT</h1>
+        <p>Traditional Flavors, Heartfelt Creations</p>
+    </header>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="about-wrapper">
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="asset/owner.jpeg" alt="Owner of DAYANGSARI ENT" onerror="this.parentElement.innerHTML='👵'">
+                </div>
+                <div class="about-text">
+                    <h2>Our Story</h2>
+                    <p>Welcome to DAYANGSARI ENT, where traditional Malaysian kuih and delicacies come to life through generations of family recipes and heartfelt passion.</p>
+                    <p>We believe the best kuih comes from the heart. Each piece is handcrafted with love, using only the finest ingredients and authentic methods passed down through our family for decades.</p>
+                    <p>From festive celebrations to everyday treats, our kuih brings the warmth of home and the taste of tradition to your table. Every order is prepared fresh, ensuring you receive the same quality and care that has made our family recipes beloved for generations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Divider -->
+    <div class="section-divider">
+    </div>
+
+    <!-- Contact Section -->
+        <div class="contact-wrapper">
+            <div class="section-header">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle">We'd love to hear from you</p>
+            </div>
+
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <img src="asset/address.png" alt="Location" onerror="this.parentElement.innerHTML='📍'">
+                        </div>
+                        <div class="contact-details">
+                            <h4>Address</h4>
+                            <p>No. 1566, Lot. 12953, Lorong Uni-Central 11B1, 94300, Kota Samarahan, Sarawak.</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <img src="asset/phone.png" alt="Phone" onerror="this.parentElement.innerHTML='📞'">
+                        </div>
+                        <div class="contact-details">
+                            <h4>Phone</h4>
+                            <p>+60 16-808 6457</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <img src="asset/email.png" alt="Email" onerror="this.parentElement.innerHTML='✉️'">
+                        </div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <p>dayangsarient@gmail.com</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <img src="asset/clock.png" alt="Business Hours" onerror="this.parentElement.innerHTML='🕐'">
+                        </div>
+                        <div class="contact-details">
+                            <h4>Business Hours</h4>
+                            <p>Mon - Sat: 10 AM - 6 PM<br>Sun: Closed</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h3>Send Us a Message</h3>
+                    <form onsubmit="submitForm(event)">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" required placeholder="Your name">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" required placeholder="your.email@gmail.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Message</label>
+                            <textarea required placeholder="How can we help you?"></textarea>
+                        </div>
+
+                        <button class="submit-btn" type="submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-top" id="scrollTop" onclick="scrollToTop()">↑</div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 DAYANGSARI ENT All rights reserved.</p>
+        <p>Created by: TMT3693 WEB APPLICATION DEVELOPMENT G8</p>
+    </footer>
+
+     <!-- ========================================
+     CHATBOT COMPONENT
+     Include this in all your pages using:
+     <div id="chatbot-container"></div>
+     Then load with JavaScript
+     ======================================== -->
+
+    <!-- Chatbot Button -->
+    <button class="chatbot-button" id="chatbotButton" onclick="toggleChatbot()">
+        <span class="chatbot-button-icon">
+            <img src="asset/chatbot.png" alt="Chat" onerror="this.style.display='none'; this.parentElement.innerHTML='💬'">
+        </span>
+        <span class="chatbot-badge" id="chatbotBadge" style="display: none;">1</span>
+    </button>
+
+    <!-- Chatbot Window -->
+    <div class="chatbot-window" id="chatbotWindow">
+        <!-- Header -->
+        <div class="chatbot-header">
+            <div class="chatbot-header-info">
+                <div class="chatbot-avatar">
+                    <img src="asset/cookies.png" alt="Cookie Bot" onerror="this.style.display='none'; this.parentElement.innerHTML='🥮'">
+                </div>
+                <div class="chatbot-title">
+                    <h3>DAYANGSARI Assistant</h3>
+                    <div class="chatbot-status">Online • Ready to help</div>
+                </div>
+            </div>
+            <button class="chatbot-close" onclick="toggleChatbot()">×</button>
+        </div>
+
+        <!-- Messages Area -->
+        <div class="chatbot-messages" id="chatbotMessages">
+            <!-- Messages will be added here dynamically -->
+        </div>
+
+        <!-- Input Area -->
+        <div class="chatbot-input-area">
+            <input 
+                type="text" 
+                class="chatbot-input" 
+                id="chatbotInput" 
+                placeholder="Type your message..."
+                onkeypress="handleChatbotKeypress(event)"
+            >
+            <button class="chatbot-send-btn" onclick="sendChatbotMessage()">
+                ➤
+            </button>
+        </div>
+    </div>
+
+    <!-- JS File -->
+    <script type="module" src="firebase-config.js"></script>
+    <script type="module" src="firebase-functions.js"></script>
+    <script type="module" src="script.js"></script>
+
+
+</body>
+</html>

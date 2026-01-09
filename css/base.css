@@ -1,0 +1,524 @@
+/* ========================================
+   DAYANGSARI ENT - BASE STYLES
+   ======================================== */
+
+/* ========================================
+   CSS RESET & BASE
+   ======================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ========================================
+   CSS VARIABLES
+   ======================================== */
+:root {
+  /* Font Families */
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  
+  /* Color Palette - Black, Brown & Gold */
+  --primary-gold: #d4af37;
+  --primary-gold-dark: #b8941f;
+  --primary-brown: #8b6f47;
+  --secondary-brown: #6b5742;
+  --dark-brown: #4a3f35;
+  --black: #1a1a1a;
+  --cream: #f5f1e8;
+  --light-cream: #faf8f3;
+  
+  /* Accent Colors */
+  --accent-red: #c85a54;
+  --accent-green: #5a8f7b;
+  
+  /* Text Colors */
+  --text-dark: #2c2416;
+  --text-medium: #5c4f3d;
+  --text-light: #8b7f6f;
+  --text-white: #ffffff;
+  
+  /* Shadows */
+  --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.12);
+  --shadow-strong: 0 8px 24px rgba(0, 0, 0, 0.16);
+  --shadow-gold: 0 4px 16px rgba(212, 175, 55, 0.25);
+  
+  /* Gradients */
+  --gradient-gold: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+  --gradient-brown: linear-gradient(135deg, #8b6f47 0%, #6b5742 100%);
+  --gradient-dark: linear-gradient(135deg, #2c2416 0%, #1a1a1a 100%);
+  
+  /* Glass Effects */
+  --glass-dark: rgba(26, 26, 26, 0.75);
+  --glass-brown: rgba(139, 111, 71, 0.85);
+  --glass-light: rgba(255, 255, 255, 0.1);
+}
+
+/* ========================================
+   BODY & BASE STYLES
+   ======================================== */
+body {
+  font-family: var(--font-body);
+  line-height: 1.6;
+  color: var(--text-dark);
+  background-image: url('../asset/bg.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-color: var(--cream);
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Background overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.15);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* ========================================
+   ENHANCED TYPOGRAPHY
+   ======================================== */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--dark-brown);
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+h1 { 
+  font-size: 3rem;
+  font-weight: 800;
+}
+
+h2 { 
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+h3 { 
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+h4 { 
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+p {
+  margin-bottom: 1rem;
+  color: var(--text-medium);
+  font-size: 1rem;
+  line-height: 1.7;
+  font-weight: 400;
+}
+
+/* Special text classes */
+.text-large {
+  font-size: 1.125rem;
+  line-height: 1.8;
+}
+
+.text-small {
+  font-size: 0.875rem;
+}
+
+/* ========================================
+   ENHANCED BUTTONS
+   ======================================== */
+
+.btn {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  margin: 0.5rem;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+  z-index: 0;
+}
+
+.btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.btn > * {
+  position: relative;
+  z-index: 1;
+}
+
+.btn-primary {
+  background: var(--gradient-gold);
+  color: var(--black);
+  box-shadow: var(--shadow-gold);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.4);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-white);
+  border: 2px solid var(--primary-gold);
+  backdrop-filter: blur(10px);
+}
+
+.btn-secondary:hover {
+  background: var(--primary-gold);
+  color: var(--black);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-gold);
+}
+
+.btn-large {
+  padding: 1.2rem 2.5rem;
+  font-size: 1.1rem;
+  flex: 1;
+  min-width: 200px;
+}
+
+.btn-block {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+/* ========================================
+   FORM ELEMENTS
+   ======================================== */
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  color: var(--dark-brown);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid rgba(139, 111, 71, 0.2);
+  border-radius: 12px;
+  font-size: 1rem;
+  font-family: var(--font-body);
+  transition: all 0.3s;
+  background: var(--light-cream);
+  color: var(--text-dark);
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--primary-gold);
+  background: white;
+  box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);
+  transform: translateY(-2px);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+  font-family: var(--font-body);
+}
+
+/* ========================================
+   TOAST NOTIFICATION STYLES
+   ======================================== */
+
+/* Toast Container */
+.toast-container {
+  position: fixed;
+  top: 100px;
+  right: 20px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none;
+}
+
+/* Toast Notification */
+.toast {
+  background: white;
+  color: var(--text-dark);
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-width: 300px;
+  max-width: 400px;
+  animation: slideIn 0.3s ease-out;
+  pointer-events: auto;
+  border-left: 4px solid var(--success-color);
+}
+
+/* Toast Types */
+.toast.success {
+  border-left-color: #4CAF50;
+}
+
+.toast.error {
+  border-left-color: var(--accent-color);
+}
+
+.toast.info {
+  border-left-color: #2196F3;
+}
+
+.toast.warning {
+  border-left-color: #FF9800;
+}
+
+/* Toast Icon */
+.toast-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.toast.success .toast-icon {
+  color: #4CAF50;
+}
+
+.toast.error .toast-icon {
+  color: var(--accent-color);
+}
+
+.toast.info .toast-icon {
+  color: #2196F3;
+}
+
+.toast.warning .toast-icon {
+  color: #FF9800;
+}
+
+/* Toast Content */
+.toast-content {
+  flex: 1;
+}
+
+.toast-title {
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+  color: var(--text-dark);
+}
+
+.toast-message {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Toast Close Button */
+.toast-close {
+  background: none;
+  border: none;
+  color: #999;
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+
+.toast-close:hover {
+  color: var(--text-dark);
+}
+
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+
+.glass-effect {
+  background: var(--glass-light);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.glass-dark {
+  background: var(--glass-dark);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+}
+
+.text-gold {
+  color: var(--primary-gold);
+}
+
+.text-brown {
+  color: var(--primary-brown);
+}
+
+.bg-cream {
+  background-color: var(--cream);
+}
+
+.shadow-soft {
+  box-shadow: var(--shadow-soft);
+}
+
+.shadow-medium {
+  box-shadow: var(--shadow-medium);
+}
+
+.shadow-strong {
+  box-shadow: var(--shadow-strong);
+}
+
+/* ========================================
+   RESPONSIVE TYPOGRAPHY
+   ======================================== */
+
+@media (max-width: 768px) {
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.75rem; }
+  h3 { font-size: 1.5rem; }
+  h4 { font-size: 1.25rem; }
+  
+  body {
+    font-size: 0.95rem;
+  }
+  
+  .btn {
+    padding: 0.9rem 2rem;
+    font-size: 1rem;
+  }
+  
+  .text-large {
+    font-size: 1rem;
+  }
+
+  .toast-container {
+    top: 80px;
+    right: 10px;
+    left: 10px;
+  }
+  
+  .toast {
+    min-width: auto;
+    max-width: none;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 { font-size: 1.75rem; }
+  h2 { font-size: 1.5rem; }
+  
+  .btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.95rem;
+  }
+}

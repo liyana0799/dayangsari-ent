@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In - DAYANGSARI ENT</title>
+  <link rel="icon" type="image/x-icon" href="asset/favicon.ico">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!--
+  <div class="page-loader" id="pageLoader">
+      <div class="loader-content">
+          <div class="cake">
+              <div class="plate"></div>
+              <div class="layer layer-bottom"></div>
+              <div class="layer layer-middle"></div>
+              <div class="layer layer-top"></div>
+              <div class="icing"></div>
+              <div class="drip drip1"></div>
+              <div class="drip drip2"></div>
+              <div class="drip drip3"></div>
+              <div class="candle">
+                  <div class="flame"></div>
+              </div>
+          </div>
+          <div class="loading-text">Loading delicious treats...</div>
+      </div>
+  </div>-->
+
+<!-- Navigation -->
+<nav>
+  <div class="nav-container">
+    <a href="index.html" class="logo">DAYANGSARI ENT</a>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="product.html">Products</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="signin.html" class="active">Sign In</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Sign In Section -->
+<div class="signin-wrapper">
+<section class="signin-section">
+  <div class="signin-container">
+    <h2>Sign In</h2>
+    <p>Welcome back! Enter your credentials to access your account</p>
+    
+    <form id="signinForm" onsubmit="handleSignIn(event)">
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="Enter your email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div class="password-input-wrapper">
+          <input type="password" id="password" placeholder="Enter your password" required>
+          <button type="button" class="password-toggle" onclick="togglePasswordVisibility('password', this)">
+            <img src="asset/eye-open.png" alt="Show password" class="eye-open" onerror="this.parentElement.innerHTML='👁️'">
+            <img src="asset/eye-closed.png" alt="Hide password" class="eye-closed" style="display: none;" onerror="this.style.display='none'">
+          </button>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Sign In</button>
+    </form>
+
+    <p class="signup-link">
+      Don't have an account? <a href="signup.html">Sign Up</a>
+    </p>
+  </div>
+</section>
+</div>
+
+<div class="scroll-top" id="scrollTop" onclick="scrollToTop()">↑</div>
+
+<!-- Footer -->
+<footer>
+  <p>&copy; 2025 DAYANGSARI ENT All rights reserved.</p>
+  <p>Created by: TMT3693 WEB APPLICATION DEVELOPMENT G8</p>
+</footer>
+
+  <script type="module" src="firebase-config.js"></script>
+  <script type="module" src="firebase-functions.js"></script>
+  <script type="module" src="script.js"></script>
+
+</body>
+</html>

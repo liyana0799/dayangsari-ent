@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Your Order - DAYANGSARI ENT</title>
+    <link rel="icon" type="image/x-icon" href="asset/favicon.ico">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-content">
+            <div class="cake">
+                <div class="plate"></div>
+                <div class="layer layer-bottom"></div>
+                <div class="layer layer-middle"></div>
+                <div class="layer layer-top"></div>
+                <div class="icing"></div>
+                <div class="drip drip1"></div>
+                <div class="drip drip2"></div>
+                <div class="drip drip3"></div>
+                <div class="candle">
+                    <div class="flame"></div>
+                </div>
+            </div>
+            <div class="loading-text">Loading delicious treats...</div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">DAYANGSARI ENT</a>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="product.html">Products</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="myaccount.html">My Account</a></li>
+                <li><a href="cart.html">Cart</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <h1>Track Your Order</h1>
+        <p>Monitor your order status and delivery progress</p>
+    </header>
+
+    <!-- Order Tracking Section -->
+    
+        <div class="tracking-wrapper">
+        <div class="tracking-container">
+            
+            <!-- Order Header -->
+            <div class="tracking-header">
+                <div class="order-qr">
+                    <canvas id="orderQRCode"></canvas>
+                </div>
+                <div class="order-info-header">
+                    <h2>Order #<span id="orderNumber">Loading...</span></h2>
+                    <p class="order-status-text" id="orderStatusText">Your order(s) are ready for shipment</p>
+                    <p class="order-date">Ordered at <span id="orderDate">Loading...</span></p>
+                </div>
+            </div>
+
+            <!-- Progress Timeline -->
+            <div class="progress-timeline">
+                <div class="timeline-step completed" id="step-ordered">
+                    <div class="step-circle"></div>
+                    <div class="step-label">Ordered<br><span class="step-sublabel">(Order)</span></div>
+                </div>
+                <div class="timeline-connector" id="connector-1"></div>
+                
+                <div class="timeline-step active" id="step-ready">
+                    <div class="step-circle"></div>
+                    <div class="step-label">Ready<br><span class="step-sublabel">(Ready)</span></div>
+                </div>
+                <div class="timeline-connector" id="connector-2"></div>
+                
+                <div class="timeline-step" id="step-transit">
+                    <div class="step-circle"></div>
+                    <div class="step-label">In Transit<br><span class="step-sublabel">(On Delivery)</span></div>
+                </div>
+                <div class="timeline-connector" id="connector-3"></div>
+                
+                <div class="timeline-step" id="step-delivered">
+                    <div class="step-circle"></div>
+                    <div class="step-label">Delivered<br><span class="step-sublabel">(Arrived)</span></div>
+                </div>
+            </div>
+
+            <!-- Latest Update Box -->
+            <div class="latest-update-box">
+                <h3>Latest Update</h3>
+                <div class="carrier-info">
+                    <div class="carrier-logo">
+                        <img src="asset/carriers/fedex.png" alt="Carrier" id="carrierLogo" onerror="this.parentElement.innerHTML='🚚'">
+                    </div>
+                    <div class="carrier-details">
+                        <p class="carrier-update" id="carrierUpdate">Today at 3:20PM</p>
+                        <p class="carrier-location" id="carrierLocation">From: Guangzhou, Guangdong Province, China</p>
+                    </div>
+                    <div class="destination-info">
+                        <p class="destination-label">Carrier-Tracking Number</p>
+                        <p class="tracking-number" id="trackingNumber">#1ZE8R8607TW01234920</p>
+                        <p class="destination-location" id="destinationLocation">To: Kuala Lumpur, Malaysia</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Package Details -->
+            <!--<div class="package-details-box">
+                <div class="package-image">
+                    <img src="asset/package-box.png" alt="Package" onerror="this.parentElement.innerHTML='📦'">
+                </div>
+                <div class="package-info">
+                    <p class="package-id" id="packageId">MS5599974</p>
+                    <p class="package-description" id="packageDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
+                    <p class="package-route">
+                        <span id="packageFrom">From: Guangzhou, China</span>
+                        <span id="packageTo">To: Kuala Lumpur, Malaysia</span>
+                    </p>
+                    <p class="package-date">Date: <span id="packageDate">12 August, 2021</span></p>
+                </div>
+                <div class="package-status">
+                    <p class="status-badge" id="statusBadge">TO BE SHIPPED</p>
+                    <p class="package-amount" id="packageAmount">62x65x5 CM / 4KG</p>
+                </div>
+                <div class="package-actions">
+                    <button class="btn-ship-now" onclick="viewShipmentDetails()">Ship Now</button>
+                    <button class="btn-details" onclick="viewOrderDetails()">Details</button>
+                </div>
+            </div>-->
+
+            <!-- Order Items -->
+            <div class="order-items-box">
+                <h3>Order Items</h3>
+                <div id="orderItemsList">
+                    <!-- Items will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Shipping Address -->
+            <div class="shipping-address-box">
+                <h3>Shipping Address</h3>
+                <p id="shippingAddress">Loading...</p>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="tracking-actions">
+                <button class="btn btn-secondary" onclick="window.location.href='myaccount.html'">
+                    View All Orders
+                </button>
+                <button class="btn btn-primary" onclick="contactSupport()">
+                    Contact Support
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="scroll-top" id="scrollTop" onclick="scrollToTop()">↑</div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 DAYANGSARI ENT All rights reserved.</p>
+        <p>Created by: TMT3693 WEB APPLICATION DEVELOPMENT G8</p>
+    </footer>
+
+    <!-- Chatbot Button -->
+    <button class="chatbot-button" id="chatbotButton" onclick="toggleChatbot()">
+        <span class="chatbot-button-icon">
+            <img src="asset/chatbot.png" alt="Chat" onerror="this.style.display='none'; this.parentElement.innerHTML='💬'">
+        </span>
+        <span class="chatbot-badge" id="chatbotBadge" style="display: none;">1</span>
+    </button>
+
+    <!-- Chatbot Window -->
+    <div class="chatbot-window" id="chatbotWindow">
+        <div class="chatbot-header">
+            <div class="chatbot-header-info">
+                <div class="chatbot-avatar">
+                    <img src="asset/cookies.png" alt="Cookie Bot" onerror="this.style.display='none'; this.parentElement.innerHTML='🥮'">
+                </div>
+                <div class="chatbot-title">
+                    <h3>DAYANGSARI Assistant</h3>
+                    <div class="chatbot-status">Online • Ready to help</div>
+                </div>
+            </div>
+            <button class="chatbot-close" onclick="toggleChatbot()">×</button>
+        </div>
+        <div class="chatbot-messages" id="chatbotMessages"></div>
+        <div class="chatbot-input-area">
+            <input type="text" class="chatbot-input" id="chatbotInput" placeholder="Type your message..." onkeypress="handleChatbotKeypress(event)">
+            <button class="chatbot-send-btn" onclick="sendChatbotMessage()">➤</button>
+        </div>
+    </div>
+
+    <script type="module" src="firebase-config.js"></script>
+    <script type="module" src="firebase-functions.js"></script>
+    <script type="module" src="script.js"></script>
+    
+</body>
+</html>

@@ -1,0 +1,350 @@
+/* ========================================
+   CHECKOUT SUCCESS PAGE STYLES
+   ======================================== */
+
+.checkoutsuccess-wrapper {
+  max-width: 1600px;
+  margin: 0 auto;
+  background: rgba(40, 30, 20, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 1px;
+  padding: 5rem;
+}
+
+.success-section {
+    padding: 4rem 2rem;
+    min-height: calc(100vh - 200px);
+    background: var(--bg-light);
+}
+
+.success-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Success Icon */
+.success-icon {
+    font-size: 5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    animation: bounceIn 0.6s ease-out;
+    filter: drop-shadow(0 4px 12px rgba(255, 215, 0, 0.4));
+    width: 120px;
+    height: 120px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Image/GIF support for success icon */
+.success-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Fallback emoji styling when image fails */
+.success-icon:empty {
+    font-size: 5rem;
+    line-height: 120px;
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Success Title */
+.success-container h1 {
+    text-align: center;
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    animation: fadeInUp 0.6s ease-out 0.2s both;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+    font-weight: 700;
+}
+
+.success-message {
+    text-align: center;
+    color: white;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    animation: fadeInUp 0.6s ease-out 0.3s both;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+    font-weight: 500;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Order Summary Card */
+.order-summary-card {
+    background: rgba(255, 255, 255, 0.662);
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2),
+                0 0 0 1px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+    animation: fadeInUp 0.6s ease-out 0.4s both;
+    border: 2px solid rgba(139, 69, 19, 0.1);
+}
+
+.order-summary-card h3 {
+    color: #5d3a1a;
+    margin-bottom: 1.5rem;
+    font-size: 1.6rem;
+    border-bottom: 3px solid #d4a574;
+    padding-bottom: 0.7rem;
+    font-weight: 700;
+}
+
+.loading-spinner {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+    font-weight: 500;
+}
+
+/* Order Details */
+.order-detail-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.order-detail-row:last-child {
+    border-bottom: none;
+}
+
+.order-detail-label {
+    font-weight: 700;
+    color: #5d3a1a;
+    font-size: 1.05rem;
+}
+
+.order-detail-value {
+    color: #333;
+    text-align: right;
+    font-weight: 600;
+    font-size: 1.05rem;
+}
+
+.order-detail-divider {
+    border: none;
+    border-top: 2px solid #d4a574;
+    margin: 1rem 0;
+}
+
+.order-detail-total {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #5d3a1a;
+}
+
+/* Success Actions */
+.success-actions {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-bottom: 3rem;
+    animation: fadeInUp 0.6s ease-out 0.5s both;
+}
+
+.success-actions .btn-large {
+    flex: 0 1 auto;
+    min-width: 200px;
+    padding: 1.2rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(50, 34, 34, 0.547);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.success-actions .btn-primary {
+    background: linear-gradient(135deg, #8b5a2b 0%, #6d4423 100%);
+    color: white;
+    border-color: #6d4423;
+}
+
+.success-actions .btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(139, 90, 43, 0.4);
+    background: linear-gradient(135deg, #9d6634 0%, #7d5128 100%);
+}
+
+.success-actions .btn-secondary {
+    background: linear-gradient(135deg, #d4a574 0%, #ff9500 100%);
+    color: #2a180d;
+    border-color: #b8935f;
+}
+
+.success-actions .btn-secondary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(212, 165, 116, 0.4);
+    background: linear-gradient(135deg, #e0b587 0%, #c9a470 100%);
+}
+
+/* Next Steps Section */
+.next-steps {
+    background: rgba(255, 255, 255, 0.662);
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2),
+                0 0 0 1px rgba(0, 0, 0, 0.05);
+    animation: fadeInUp 0.6s ease-out 0.6s both;
+    border: 2px solid rgba(139, 69, 19, 0.1);
+}
+
+.next-steps h3 {
+    color: #5d3a1a;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.9rem;
+    font-weight: 700;
+}
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.step-card {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    background: rgba(209, 209, 209, 0.827);
+    border-radius: 16px;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(139, 69, 19, 0.08);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.step-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(139, 90, 43, 0.2);
+    border-color: rgba(139, 69, 19, 0.2);
+}
+
+.step-icon {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+    width: 80px;
+    height: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Image support for step icons */
+.step-icon img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+/* Fallback emoji styling when image fails */
+.step-icon:empty {
+    font-size: 3.5rem;
+    line-height: 80px;
+}
+
+.step-card h4 {
+    color: #5d3a1a;
+    margin-bottom: 0.7rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.step-card p {
+    color: #4a4a4a;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 768px) {
+    .checkoutsuccess-wrapper {
+        padding: 3rem 2rem;
+        border-radius: 1px;
+    }
+
+    .success-section {
+        padding: 2rem 1rem;
+    }
+
+    .success-container h1 {
+        font-size: 2rem;
+    }
+
+    .success-icon {
+        font-size: 4rem;
+    }
+
+    .success-actions {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .success-actions .btn-large {
+        width: 100%;
+        min-width: 100%;
+    }
+
+    .step-icon {
+        width: 70px;
+        height: 70px;
+    }
+
+    .step-icon img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .step-icon:empty {
+        font-size: 2.5rem;
+        line-height: 70px;
+    }
+
+    .steps-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .order-summary-card,
+    .next-steps {
+        padding: 1.8rem;
+    }
+}

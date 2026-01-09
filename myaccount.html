@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account - DAYANGSARI ENT</title>
+    <link rel="icon" type="image/x-icon" href="asset/favicon.ico">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!--
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-content">
+            <div class="cake">
+                <div class="plate"></div>
+                <div class="layer layer-bottom"></div>
+                <div class="layer layer-middle"></div>
+                <div class="layer layer-top"></div>
+                <div class="icing"></div>
+                <div class="drip drip1"></div>
+                <div class="drip drip2"></div>
+                <div class="drip drip3"></div>
+                <div class="candle">
+                    <div class="flame"></div>
+                </div>
+            </div>
+            <div class="loading-text">Loading delicious treats...</div>
+        </div>
+    </div>-->
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">DAYANGSARI ENT</a>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="product.html">Products</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="myaccount.html">My Account</a></li>
+                <li><a href="cart.html">Cart</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <h1>My Account</h1>
+        <p>Manage your account, orders and preferences</p>
+    </header>
+
+    <!-- Account Dashboard -->
+    <div class="account-wrapper">
+    <section class="account-dashboard">
+        <div class="dashboard-container">
+            
+            <!-- Sidebar Navigation -->
+            <aside class="account-sidebar">
+                <div class="sidebar-logo">
+                    <img src="asset/DAYANGSARI ENT Transparent.png" alt="DAYANGSARI ENT Logo" class="logo-img">
+                </div>
+
+                <div class="user-info-sidebar">
+                    <h3 id="sidebarName">Loading...</h3>
+                    <p id="sidebarEmail">Loading...</p>
+                </div>
+
+                <ul class="sidebar-menu">
+                    <li><a href="#" class="active" data-section="overview" onclick="showSection('overview')">Overview</a></li>
+                    <li><a href="#" data-section="orders" onclick="showSection('orders')">Orders</a></li>
+                    <li><a href="#" data-section="wishlist" onclick="showSection('wishlist')">Wishlist</a></li>
+                    <li><a href="#" data-section="settings" onclick="showSection('settings')">Account Settings</a></li>
+                    <li><a href="#" class="logout-link" onclick="logout()">Logout</a></li>
+                </ul>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="account-main">
+                
+                <!-- Overview Section -->
+                <div id="overview-section" class="content-section active">
+                    <h2>Welcome Back!</h2>
+                    <div class="overview-cards">
+                        <div class="overview-card">
+                            <div class="card-icon">📦</div>
+                            <div class="card-info">
+                                <h3 id="totalOrders">0</h3>
+                                <p>Total Orders</p>
+                            </div>
+                        </div>
+                        <div class="overview-card">
+                            <div class="card-icon">⏳</div>
+                            <div class="card-info">
+                                <h3 id="pendingOrders">0</h3>
+                                <p>Pending Orders</p>
+                            </div>
+                        </div>
+                        <div class="overview-card">
+                            <div class="card-icon">❤️</div>
+                            <div class="card-info">
+                                <h3 id="wishlistCount">0</h3>
+                                <p>Wishlist Items</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="recent-activity">
+                        <h3>Recent Orders</h3>
+                        <div id="recentOrdersList">
+                            <p class="no-data">No recent orders</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Orders Section -->
+                <div id="orders-section" class="content-section">
+                    <h2>My Orders</h2>
+                    
+                    <div class="orders-tabs">
+                        <button class="tab-btn active" onclick="showOrderTab('past')">Past Orders</button>
+                        <button class="tab-btn" onclick="showOrderTab('pending')">Pending Orders</button>
+                        <button class="tab-btn" onclick="showOrderTab('returns')">Returns & Cancellations</button>
+                    </div>
+
+                    <div id="past-orders" class="order-tab-content active">
+                        <div id="pastOrdersList">
+                            <p class="no-data">No past orders</p>
+                        </div>
+                    </div>
+
+                    <div id="pending-orders" class="order-tab-content">
+                        <div id="pendingOrdersList">
+                            <p class="no-data">No pending orders</p>
+                        </div>
+                    </div>
+
+                    <div id="returns-orders" class="order-tab-content">
+                        <div id="returnsOrdersList">
+                            <p class="no-data">No returns or cancellations</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wishlist Section -->
+                <div id="wishlist-section" class="content-section">
+                    <h2>My Wishlist</h2>
+                    <div id="wishlistGrid" class="wishlist-grid">
+                        <p class="no-data">Your wishlist is empty</p>
+                    </div>
+                </div>
+
+                <!-- Settings Section -->
+                <div id="settings-section" class="content-section">
+                    <h2>Account Settings</h2>
+                    
+                    <!-- Profile Settings -->
+                    <div class="settings-card">
+                        <h3>Profile Information</h3>
+                        <form id="profileForm" onsubmit="updateProfile(event)">
+                            <div class="form-group">
+                                <label>Full Name</label>
+                                <input type="text" id="profileName" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" id="profileEmail" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone Number</label>
+                                <input type="tel" id="profilePhone" placeholder="+60 12-345 6789">
+                            </div>
+                            <button type="submit" class="btn-primary">Update Profile</button>
+                        </form>
+                    </div>
+
+                    <!-- Password Change -->
+                    <div class="settings-card">
+                        <h3>Change Password</h3>
+                        <form id="passwordForm" onsubmit="changePassword(event)">
+                            <div class="form-group">
+                                <label>Current Password</label>
+                                <input type="password" id="currentPassword" required>
+                            </div>
+                            <div class="form-group">
+                                <label>New Password</label>
+                                <input type="password" id="newPassword" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Confirm New Password</label>
+                                <input type="password" id="confirmPassword" required>
+                            </div>
+                            <button type="submit" class="btn-primary">Change Password</button>
+                        </form>
+                    </div>
+
+                    <!-- Saved Address -->
+                    <div class="settings-card">
+                        <h3>Saved Addresses</h3>
+                        <div id="savedAddresses">
+                            <p class="no-data">No saved addresses</p>
+                        </div>
+                        <button class="btn-secondary" onclick="addAddress()">+ Add New Address</button>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </section>
+    </div>
+
+    <div class="scroll-top" id="scrollTop" onclick="scrollToTop()">↑</div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 DAYANGSARI ENT All rights reserved.</p>
+        <p>Created by: TMT3693 WEB APPLICATION DEVELOPMENT G8</p>
+    </footer>
+
+     <!-- ========================================
+     CHATBOT COMPONENT
+     Include this in all your pages using:
+     <div id="chatbot-container"></div>
+     Then load with JavaScript
+     ======================================== -->
+
+     <!-- Chatbot Button -->
+    <button class="chatbot-button" id="chatbotButton" onclick="toggleChatbot()">
+        <span class="chatbot-button-icon">
+            <img src="asset/chatbot.png" alt="Chat" onerror="this.style.display='none'; this.parentElement.innerHTML='💬'">
+        </span>
+        <span class="chatbot-badge" id="chatbotBadge" style="display: none;">1</span>
+    </button>
+
+    <!-- Chatbot Window -->
+    <div class="chatbot-window" id="chatbotWindow">
+        <!-- Header -->
+        <div class="chatbot-header">
+            <div class="chatbot-header-info">
+                <div class="chatbot-avatar">
+                    <img src="asset/cookies.png" alt="Cookie Bot" onerror="this.style.display='none'; this.parentElement.innerHTML='🥮'">
+                </div>
+                <div class="chatbot-title">
+                    <h3>DAYANGSARI Assistant</h3>
+                    <div class="chatbot-status">Online • Ready to help</div>
+                </div>
+            </div>
+            <button class="chatbot-close" onclick="toggleChatbot()">×</button>
+        </div>
+
+        <!-- Messages Area -->
+        <div class="chatbot-messages" id="chatbotMessages">
+            <!-- Messages will be added here dynamically -->
+        </div>
+
+        <!-- Input Area -->
+        <div class="chatbot-input-area">
+            <input 
+                type="text" 
+                class="chatbot-input" 
+                id="chatbotInput" 
+                placeholder="Type your message..."
+                onkeypress="handleChatbotKeypress(event)"
+            >
+            <button class="chatbot-send-btn" onclick="sendChatbotMessage()">
+                ➤
+            </button>
+        </div>
+    </div>
+
+    <script type="module" src="firebase-config.js"></script>
+    <script type="module" src="firebase-functions.js"></script>
+    <script type="module" src="script.js"></script>
+
+</body>
+</html>

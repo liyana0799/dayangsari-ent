@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FPX Payment Gateway - DAYANGSARI ENT</title>
+    <link rel="icon" type="image/x-icon" href="asset/favicon.ico">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="payment-gateway-wrapper">
+    <div class="payment-gateway-container">
+        <!-- Header -->
+        <div class="gateway-header">
+            <div class="gateway-logo">
+                <img src="asset/fpx-logo.png" alt="FPX" onerror="this.parentElement.innerHTML='<h2>FPX Payment Gateway</h2>'">
+            </div>
+            <div class="secure-badge">
+                <span>🔒 Secure Payment</span>
+            </div>
+        </div>
+
+        <!-- Payment Details -->
+        <div class="payment-details-box">
+            <h3>Payment to: DAYANGSARI ENT</h3>
+            <div class="amount-display">
+                <span class="amount-label">Amount:</span>
+                <span class="amount-value" id="paymentAmount">RM 0.00</span>
+            </div>
+            <div class="order-info">
+                <p><strong>Order ID:</strong> <span id="orderId">Loading...</span></p>
+                <p><strong>Merchant:</strong> DAYANGSARI ENTERPRISE</p>
+            </div>
+        </div>
+
+        <!-- Bank Selection -->
+        <div class="bank-selection-box">
+            <h3>Select Your Bank</h3>
+            <p class="instruction">Choose your bank to proceed with payment</p>
+
+            <div class="banks-grid">
+                <!-- Malaysian Banks -->
+                <div class="bank-option" onclick="selectBank('Maybank')">
+                    <img src="asset/banks/maybank.png" alt="Maybank" onerror="this.style.display='none'">
+                    <span>Maybank</span>
+                </div>
+
+                <div class="bank-option" onclick="selectBank('Public Bank')">
+                    <img src="asset/banks/public-bank.png" alt="Public Bank" onerror="this.style.display='none'">
+                    <span>Public Bank</span>
+                </div>
+
+                <div class="bank-option" onclick="selectBank('CIMB Bank')">
+                    <img src="asset/banks/cimb.png" alt="CIMB" onerror="this.style.display='none'">
+                    <span>CIMB Bank</span>
+                </div>
+
+                <div class="bank-option" onclick="selectBank('RHB Bank')">
+                    <img src="asset/banks/rhb.png" alt="RHB" onerror="this.style.display='none'">
+                    <span>RHB Bank</span>
+                </div>
+
+                <div class="bank-option" onclick="selectBank('Hong Leong Bank')">
+                    <img src="asset/banks/hongleong.png" alt="Hong Leong" onerror="this.style.display='none'">
+                    <span>Hong Leong Bank</span>
+                </div>
+
+                <div class="bank-option" onclick="selectBank('AmBank')">
+                    <img src="asset/banks/ambank.png" alt="AmBank" onerror="this.style.display='none'">
+                    <span>AmBank</span>
+                </div>
+
+                <div class="bank-option" onclick="selectBank('Bank Islam')">
+                    <img src="asset/banks/bank-islam.png" alt="Bank Islam" onerror="this.style.display='none'">
+                    <span>Bank Islam</span>
+                </div>
+
+                <div class="bank-option" onclick="selectBank('Alliance Bank')">
+                    <img src="asset/banks/alliance.png" alt="Alliance" onerror="this.style.display='none'">
+                    <span>Alliance Bank</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="gateway-actions">
+            <button class="btn-cancel" onclick="cancelPayment()">Cancel Payment</button>
+            <button class="btn-proceed" id="proceedBtn" disabled onclick="proceedToBank()">
+                Proceed to Bank
+            </button>
+        </div>
+
+        <!-- Security Notice -->
+        <div class="security-notice">
+            <p class="secure-note">🔒 This is a secure connection. Your payment information is encrypted.</p>
+            <p style="font-size: 0.85rem; color: #999;">
+                Demo Mode: This is a simulated payment gateway for demonstration purposes.
+            </p>
+        </div>
+    </div>
+    </div>
+
+    <!-- Firebase Configuration -->
+    <script type="module" src="firebase-config.js"></script>
+    <script type="module" src="firebase-functions.js"></script>
+
+    <!-- Your Scripts -->
+    <script type="module" src="script.js"></script>
+        
+</body>
+</html>

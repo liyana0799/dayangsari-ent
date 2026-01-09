@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-box {
+            background: white;
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 4px solid #ddd;
+        }
+        .test-box.success {
+            border-left-color: #4CAF50;
+            background: #f1f8f4;
+        }
+        .test-box.error {
+            border-left-color: #f44336;
+            background: #fef1f0;
+        }
+        .test-box.warning {
+            border-left-color: #ff9800;
+            background: #fff8f0;
+        }
+        button {
+            background: #8b4513;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+        }
+        button:hover {
+            background: #6d3410;
+        }
+        pre {
+            background: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        h1 {
+            color: #8b4513;
+        }
+        .status {
+            font-weight: bold;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔥 Firebase Connection Test</h1>
+    
+    <div id="results"></div>
+    
+    <div style="margin-top: 20px;">
+        <button onclick="runTests()">Run All Tests</button>
+        <button onclick="testSignUp()">Test Sign Up</button>
+        <button onclick="clearResults()">Clear Results</button>
+    </div>
+
+    <script type="module">
+        import { auth, db } from './firebase-config.js';
+        import { 
+            createUserWithEmailAndPassword,
+            signInWithEmailAndPassword,
+            signOut
+        } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
+        import { 
+            doc,
+            setDoc,
+            serverTimestamp
+        } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-firestore.js";
+
+        const resultsDiv = document.getElementById('results');
+
+        function addResult(title, status, message, details = '') {
+            const div = document.createElement('div');
+            div.className = `test-box ${status}`;
+            div.innerHTML = `
+                <div class="status">${status === 'success' ? '✅' : status === 'error' ? '❌' : '⚠️'} ${title}</div>
+                <p>${message}</p>
+                ${details ? `<pre>${details}</pre>` : ''}
+            `;
+            resultsDiv.appendChild(div);
+        }
+
+        window.clearResults = function() {
+            resultsDiv.innerHTML = '';
+        }
+
+        window.runTests = async function() {
+            clearResults();
+            
+            // Test 1: Check if Firebase is loaded
+            addResult(
+                'Test 1: Firebase SDK',
+                typeof auth !== 'undefined' ? 'success' : 'error',
+                typeof auth !== 'undefined' 
+                    ? 'Firebase SDK loaded successfully' 
+                    : 'Firebase SDK not loaded',
+                `Auth object: ${typeof auth}\nDB object: ${typeof db}`
+            );
+
+            // Test 2: Check Firebase Config
+            try {
+                const config = auth.app.options;
+                addResult(
+                    'Test 2: Firebase Configuration',
+                    'success',
+                    'Firebase config looks good',
+                    `Project ID: ${config.projectId}\nAuth Domain: ${config.authDomain}`
+                );
+            } catch (error) {
+                addResult(
+                    'Test 2: Firebase Configuration',
+                    'error',
+                    'Could not read Firebase config',
+                    error.message
+                );
+            }
+
+            // Test 3: Check Auth State
+            try {
+                const currentUser = auth.currentUser;
+                addResult(
+                    'Test 3: Auth State',
+                    'success',
+                    currentUser ? `Logged in as: ${currentUser.email}` : 'Not logged in (this is OK)',
+                    currentUser ? `UID: ${currentUser.uid}` : ''
+                );
+            } catch (error) {
+                addResult(
+                    'Test 3: Auth State',
+                    'error',
+                    'Error checking auth state',
+                    error.message
+                );
+            }
+
+            // Test 4: Check Network Connection
+            addResult(
+                'Test 4: Network',
+                'success',
+                'If you can see this, your network is working',
+                'Firebase requires internet connection'
+            );
+        }
+
+        window.testSignUp = async function() {
+            clearResults();
+            
+            const testEmail = `test${Date.now()}@gmail.com`;
+            const testPassword = 'Test123!@#';
+            const testName = 'Test User';
+
+            addResult(
+                'Starting Sign Up Test',
+                'warning',
+                'Creating test account...',
+                `Email: ${testEmail}\nPassword: ${testPassword}`
+            );
+
+            try {
+                // Step 1: Create user
+                addResult(
+                    'Step 1: Creating Firebase Auth User',
+                    'warning',
+                    'Calling createUserWithEmailAndPassword...',
+                    ''
+                );
+
+                const userCredential = await createUserWithEmailAndPassword(auth, testEmail, testPassword);
+                const user = userCredential.user;
+
+                addResult(
+                    'Step 1: Firebase Auth User Created',
+                    'success',
+                    'User created in Firebase Authentication',
+                    `UID: ${user.uid}\nEmail: ${user.email}`
+                );
+
+                // Step 2: Create Firestore document
+                addResult(
+                    'Step 2: Creating Firestore Document',
+                    'warning',
+                    'Writing user data to Firestore...',
+                    ''
+                );
+
+                await setDoc(doc(db, 'users', user.uid), {
+                    name: testName,
+                    email: testEmail,
+                    role: 'customer',
+                    createdAt: serverTimestamp()
+                });
+
+                addResult(
+                    'Step 2: Firestore Document Created',
+                    'success',
+                    'User document created successfully',
+                    `Collection: users\nDocument ID: ${user.uid}`
+                );
+
+                // Step 3: Clean up - delete test user
+                addResult(
+                    'Step 3: Cleaning Up',
+                    'warning',
+                    'Deleting test account...',
+                    ''
+                );
+
+                await user.delete();
+
+                addResult(
+                    '🎉 Sign Up Test Complete',
+                    'success',
+                    'All steps passed! Sign up is working correctly.',
+                    'You can now use the actual sign up form.'
+                );
+
+            } catch (error) {
+                addResult(
+                    '❌ Sign Up Test Failed',
+                    'error',
+                    'Error during sign up test',
+                    `Error Code: ${error.code}\nError Message: ${error.message}\n\nFull Error: ${JSON.stringify(error, null, 2)}`
+                );
+
+                // Provide specific guidance based on error
+                if (error.code === 'auth/invalid-api-key') {
+                    addResult(
+                        '🔧 Fix Required',
+                        'error',
+                        'Your Firebase API key is invalid',
+                        'Go to Firebase Console → Project Settings → General\nCopy the correct API key and update firebase-config.js'
+                    );
+                } else if (error.code === 'auth/network-request-failed') {
+                    addResult(
+                        '🔧 Fix Required',
+                        'error',
+                        'Network connection issue',
+                        '1. Check your internet connection\n2. Disable any ad blockers\n3. Check if Firebase is blocked by firewall'
+                    );
+                } else if (error.code === 'permission-denied') {
+                    addResult(
+                        '🔧 Fix Required',
+                        'error',
+                        'Firestore permission denied',
+                        'Check your Firestore security rules in Firebase Console'
+                    );
+                }
+            }
+        }
+
+        // Run tests on page load
+        window.addEventListener('load', () => {
+            setTimeout(runTests, 500);
+        });
+
+        // Make functions available globally
+        window.auth = auth;
+        window.db = db;
+    </script>
+</body>
+</html>
