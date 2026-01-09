@@ -13,17 +13,20 @@ import {
   deleteDoc,
   doc,
   getDoc,
+  setDoc,
   query, 
   where, 
   orderBy, 
   limit,
   Timestamp
 } from 'https://www.gstatic.com/firebasejs/12.7.0/firebase-firestore.js';
+
 import { 
   ref as storageRef,
   uploadBytes,
   getDownloadURL,
-  deleteObject
+  deleteObject,
+  listAll
 } from 'https://www.gstatic.com/firebasejs/12.7.0/firebase-storage.js';
 
 // ========================================
@@ -2429,7 +2432,8 @@ async function changePassword() {
   
   try {
     // Import necessary functions
-    const { EmailAuthProvider, reauthenticateWithCredential, updatePassword } = await import('https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js');
+    const authFunctions = await import('https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js')
+    const { EmailAuthProvider, reauthenticateWithCredential, updatePassword } = authFunctions;
     
     // Re-authenticate user with current password
     const credential = EmailAuthProvider.credential(user.email, currentPassword);
@@ -2472,7 +2476,7 @@ async function toggleWebsiteStatus() {
   
   try {
     // Store website status in Firestore
-    const settingsRef = doc(db, 'settings', 'website');
+    const settingsRef = doc(db, 'sitesettings', 'website');
     await updateDoc(settingsRef, {
       isOpen: isOpen,
       updatedAt: Timestamp.now(),
@@ -2582,7 +2586,7 @@ async function deleteWebsite() {
     
     // Delete images from storage (if any)
     try {
-      const storageListRef = ref(storage, 'products/');
+      const storageListRef = storageRef(storage, 'products/');
       const fileList = await listAll(storageListRef);
       
       const deleteFilePromises = fileList.items.map(fileRef => deleteObject(fileRef));
@@ -2645,6 +2649,11 @@ window.deleteCustomer = deleteCustomer;
 window.getCustomerStatistics = getCustomerStatistics;
 window.updateChartsData = updateChartsData;
 window.downloadReport = downloadReport;
+window.changeEmail = changeEmail;
+window.changePassword = changePassword;
+window.toggleWebsiteStatus = toggleWebsiteStatus;
+window.deleteWebsite = deleteWebsite;
+
 // ========================================
 // INITIALIZE ON DOM LOAD
 // ========================================
@@ -2671,6 +2680,10 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeOrders();
   } else if (path.includes('admin-customers.html')) {
     initializeCustomers();
+  } else if (path.includes('admin-analytics.html')) {
+    initializeAnalytics();
+  } else if (path.includes('admin-account.html')) {
+    initializeAccount ();
   }
   // Add more page initializations here as needed
 });
