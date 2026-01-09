@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Management</title>
+  <link rel="icon" type="image/x-icon" href="../asset/favicon.ico">
+  <link rel="stylesheet" href="admin-style.css">
+</head>
+<body>
+
+<div class="admin-container">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <img src="../asset/DAYANGSARI ENT Transparent.png" alt="DAYANGSARI ENT Logo" class="logo-img">
+    </div>
+    <ul class="sidebar-menu">
+      <li><a href="admin.html">Dashboard</a></li>
+      <li><a href="admin-products.html">Products</a></li>
+      <li><a href="admin-orders.html">Orders</a></li>
+      <li><a href="admin-customers.html" class="active">Customers</a></li>
+      <li><a href="admin-analytics.html">Analytics</a></li>
+      <li><a href="admin-account.html">My Account</a></li>
+      <li class="logout-item"><a href="#logout" id="logout-btn">Log Out</a></li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="admin-main">
+    <section id="customers">
+      <div class="page-header">
+        <h1>Customers Management</h1>
+        <button class="btn-primary" id="export-customers-btn">Export Customers</button>
+      </div>
+
+      <!-- Search and Filter -->
+      <div class="filter-bar">
+        <input type="text" id="search-customers" placeholder="Search by name, email, or phone..." class="search-input">
+        <select id="filter-customer-type" class="filter-select">
+          <option value="">All Customers</option>
+          <option value="regular">Regular</option>
+          <option value="vip">VIP</option>
+          <option value="new">New</option>
+        </select>
+      </div>
+
+      <!-- Customers Table -->
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Customer ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Total Orders</th>
+            <th>Total Spent (RM)</th>
+            <th>Type</th>
+            <th>Joined</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="customers-table-body">
+          <tr>
+            <td colspan="9" style="text-align: center; padding: 2rem; color: #999;">
+              No customers found.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</div>
+
+<script type="module" src="admin.js"></script>
+
+</body>
+</html>

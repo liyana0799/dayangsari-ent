@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="icon" type="image/x-icon" href="../asset/favicon.ico">
+
+  <link rel="stylesheet" href="admin-style.css">
+ 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<div class="admin-container">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <img src="../asset/DAYANGSARI ENT Transparent.png" alt="DAYANGSARI ENT Logo" class="logo-img">
+    </div>
+    <ul class="sidebar-menu">
+      <li><a href="admin.html" class="active">Dashboard</a></li>
+      <li><a href="admin-products.html">Products</a></li>
+      <li><a href="admin-orders.html">Orders</a></li>
+      <li><a href="admin-customers.html">Customers</a></li>
+      <li><a href="admin-analytics.html">Analytics</a></li>
+      <li><a href="admin-account.html">My Account</a></li>
+      <li class="logout-item"><a href="#logout" id="logout-btn">Log Out</a></li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="admin-main">
+    <section id="dashboard">
+      <h1>Dashboard</h1>
+      
+      <!-- Stats Cards -->
+      <div class="cards-grid">
+        <div class="card">
+          <h3>Total Sales</h3>
+          <p id="total-sales">RM 0</p>
+          <span class="card-subtitle">This month</span>
+        </div>
+        <div class="card">
+          <h3>Orders</h3>
+          <p id="total-orders">0</p>
+          <span class="card-subtitle">Pending: 0</span>
+        </div>
+        <div class="card">
+          <h3>Customers</h3>
+          <p id="total-customers">0</p>
+          <span class="card-subtitle">Active users</span>
+        </div>
+        <div class="card">
+          <h3>Products</h3>
+          <p id="total-products">0</p>
+          <span class="card-subtitle">In stock</span>
+        </div>
+      </div>
+
+      <!-- Sales Chart -->
+      <div class="chart-container">
+        <h2>Sales Overview</h2>
+        <canvas id="salesChart"></canvas>
+      </div>
+
+      <!-- Recent Orders Quick View -->
+      <div class="recent-section">
+        <div class="section-header">
+          <h2>Recent Orders</h2>
+          <a href="admin-orders.html" class="view-all-btn">View All →</a>
+        </div>
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>Customer</th>
+              <th>Total (RM)</th>
+              <th>Status</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody id="recent-orders-body">
+            <tr>
+              <td colspan="5" style="text-align: center; padding: 2rem; color: #999;">
+                No recent orders
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </section>
+  </main>
+</div>
+
+<script type="module" src="admin.js"></script>
+
+</body>
+</html>

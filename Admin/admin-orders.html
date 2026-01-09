@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Track Orders</title>
+  <link rel="icon" type="image/x-icon" href="../asset/favicon.ico">
+  <link rel="stylesheet" href="admin-style.css">
+</head>
+<body>
+
+<div class="admin-container">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <img src="../asset/DAYANGSARI ENT Transparent.png" alt="DAYANGSARI ENT Logo" class="logo-img">
+    </div>
+    <ul class="sidebar-menu">
+      <li><a href="admin.html">Dashboard</a></li>
+      <li><a href="admin-products.html">Products</a></li>
+      <li><a href="admin-orders.html" class="active">Orders</a></li>
+      <li><a href="admin-customers.html">Customers</a></li>
+      <li><a href="admin-analytics.html">Analytics</a></li>
+      <li><a href="admin-account.html">My Account</a></li>
+      <li class="logout-item"><a href="#logout" id="logout-btn">Log Out</a></li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="admin-main">
+    <section id="orders">
+      <div class="page-header">
+        <h1>Orders Management</h1>
+        <button class="btn-primary" id="export-orders-btn">Export Orders</button>
+      </div>
+
+      <!-- Search and Filter -->
+      <div class="filter-bar">
+        <input type="text" id="search-orders" placeholder="Search by Order ID or Customer..." class="search-input">
+        <select id="filter-status" class="filter-select">
+          <option value="">All Status</option>
+          <option value="pending">Pending</option>
+          <option value="processing">Processing</option>
+          <option value="shipped">Shipped</option>
+          <option value="delivered">Delivered</option>
+          <option value="cancelled">Cancelled</option>
+        </select>
+        <input type="date" id="filter-date-from" class="filter-select">
+        <input type="date" id="filter-date-to" class="filter-select">
+      </div>
+
+      <!-- Orders Table -->
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Order ID</th>
+            <th>Customer</th>
+            <th>Products</th>
+            <th>Total (RM)</th>
+            <th>Payment</th>
+            <th>Status</th>
+            <th>Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="orders-table-body">
+          <tr>
+            <td colspan="8" style="text-align: center; padding: 2rem; color: #999;">
+              No orders found.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</div>
+
+<script type="module" src="admin.js"></script>
+
+</body>
+</html>

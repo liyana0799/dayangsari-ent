@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products Inventory</title>
+  <link rel="icon" type="image/x-icon" href="../asset/favicon.ico">
+  <link rel="stylesheet" href="admin-style.css">
+</head>
+<body>
+
+<div class="admin-container">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <img src="../asset/DAYANGSARI ENT Transparent.png" alt="DAYANGSARI ENT Logo" class="logo-img">
+    </div>
+    <ul class="sidebar-menu">
+      <li><a href="admin.html">Dashboard</a></li>
+      <li><a href="admin-products.html" class="active">Products</a></li>
+      <li><a href="admin-orders.html">Orders</a></li>
+      <li><a href="admin-customers.html">Customers</a></li>
+      <li><a href="admin-analytics.html">Analytics</a></li>
+      <li><a href="admin-account.html">My Account</a></li>
+      <li class="logout-item"><a href="#logout" id="logout-btn">Log Out</a></li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="admin-main">
+    <section id="products">
+      <div class="page-header">
+        <h1>Products Management</h1>
+        <button class="btn-primary" id="add-product-btn">+ Add New Product</button>
+      </div>
+
+      <!-- Search and Filter -->
+      <div class="filter-bar">
+        <input type="text" id="search-products" placeholder="Search products..." class="search-input">
+        <select id="filter-category" class="filter-select">
+          <option value="">All Categories</option>
+          <option value="cookies">Traditional Biscuits</option>
+          <option value="snacks">Snacks & Crackers</option>
+          <option value="cakes">Layered Cakes</option>
+        </select>
+        <select id="filter-stock" class="filter-select">
+          <option value="">All Stock Status</option>
+          <option value="in-stock">In Stock</option>
+          <option value="low-stock">Low Stock</option>
+          <option value="out-of-stock">Out of Stock</option>
+        </select>
+      </div>
+
+      <!-- Products Table -->
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Image</th>
+            <th>Product Name</th>
+            <th>Category</th>
+            <th>Price (RM)</th>
+            <th>Stock</th>
+            <th>Status</th>
+            <th>Last Updated</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="products-table-body">
+          <tr>
+            <td colspan="9" style="text-align: center; padding: 2rem; color: #999;">
+              Loading products...
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Product Stats -->
+      <div class="cards-grid" style="margin-top: 2rem;">
+        <div class="card">
+          <h3>Total Products</h3>
+          <p id="stats-total">0</p>
+          <span class="card-subtitle">In database</span>
+        </div>
+        <div class="card">
+          <h3>In Stock</h3>
+          <p id="stats-in-stock">0</p>
+          <span class="card-subtitle">Available products</span>
+        </div>
+        <div class="card">
+          <h3>Low Stock</h3>
+          <p id="stats-low-stock">0</p>
+          <span class="card-subtitle">Need restock</span>
+        </div>
+        <div class="card">
+          <h3>Out of Stock</h3>
+          <p id="stats-out-stock">0</p>
+          <span class="card-subtitle">Unavailable</span>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script type="module" src="admin.js"></script>
+
+
+</body>
+</html>

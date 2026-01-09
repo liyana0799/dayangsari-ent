@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Account - Admin</title>
+  <link rel="icon" type="image/x-icon" href="../asset/favicon.ico">
+  <link rel="stylesheet" href="admin-style.css">
+</head>
+<body>
+
+<div class="admin-container">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <img src="../asset/DAYANGSARI ENT Transparent.png" alt="DAYANGSARI ENT Logo" class="logo-img">
+    </div>
+    <ul class="sidebar-menu">
+      <li><a href="admin.html">Dashboard</a></li>
+      <li><a href="admin-products.html">Products</a></li>
+      <li><a href="admin-orders.html">Orders</a></li>
+      <li><a href="admin-customers.html">Customers</a></li>
+      <li><a href="admin-analytics.html">Analytics</a></li>
+      <li><a href="admin-account.html" class="active">My Account</a></li>
+      <li class="logout-item"><a href="#logout" id="logout-btn">Log Out</a></li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="admin-main">
+    <h1>My Account</h1>
+
+    <!-- Account Information and Password Grid -->
+    <div class="account-grid">
+      
+      <!-- Account Information Section -->
+      <div class="account-section">
+        <h2>Account Information</h2>
+        
+        <div class="form-group">
+          <label>Current Email</label>
+          <div class="current-email" id="current-email">admin@dayangsari.com</div>
+        </div>
+
+        <div class="form-group">
+          <label for="new-email">Change Email Address</label>
+          <input type="email" id="new-email" placeholder="Enter new email address">
+          <small>You will need to verify your new email address</small>
+        </div>
+
+        <button class="btn-save" onclick="changeEmail()">Update Email</button>
+      </div>
+
+      <!-- Password Section -->
+      <div class="account-section">
+        <h2>Change Password</h2>
+        
+        <div class="form-group">
+          <label for="current-password">Current Password</label>
+          <input type="password" id="current-password" placeholder="Enter current password">
+        </div>
+
+        <div class="form-group">
+          <label for="new-password">New Password</label>
+          <input type="password" id="new-password" placeholder="Enter new password">
+          <small>Password must be at least 8 characters</small>
+        </div>
+
+        <div class="form-group">
+          <label for="confirm-password">Confirm New Password</label>
+          <input type="password" id="confirm-password" placeholder="Confirm new password">
+        </div>
+
+        <button class="btn-save" onclick="changePassword()">Update Password</button>
+      </div>
+      
+    </div>
+
+    <!-- Website Status Section -->
+    <div class="account-section">
+      <h2>Website Status Control</h2>
+      
+      <div class="toggle-switch">
+        <label class="switch">
+          <input type="checkbox" id="website-status" checked onchange="toggleWebsiteStatus()">
+          <span class="slider"></span>
+        </label>
+        <span class="status-label">Store is <span id="status-text">Open</span></span>
+      </div>
+
+      <div class="status-indicator open" id="status-indicator">
+        <span class="status-dot open" id="status-dot"></span>
+        <div>
+          <strong>Website is currently accessible to customers</strong>
+          <p class="status-description">Customers can browse and place orders</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Danger Zone -->
+    <div class="danger-zone">
+      <h2>⚠️ Danger Zone</h2>
+      <p>
+        <strong>Delete Website:</strong> This action will permanently delete all website data including products, orders, customers, and analytics. This action cannot be undone and will require rebuilding the entire website from scratch.
+      </p>
+      <p class="danger-warning">
+        ⚠️ WARNING: This will completely destroy the website and all associated data!
+      </p>
+      <button class="btn-danger" onclick="deleteWebsite()">🗑️ Delete Entire Website</button>
+    </div>
+
+  </main>
+</div>
+
+<script type="module" src="../firebase-config.js"></script>
+<script type="module" src="../firebase-functions.js"></script>
+<script type="module" src="../script.js"></script>
+<script type="module" src="admin.js"></script>
+
+</body>
+</html>

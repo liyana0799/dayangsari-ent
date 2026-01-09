@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analytics</title>
+  <link rel="icon" type="image/x-icon" href="../asset/favicon.ico">
+
+  <link rel="stylesheet" href="admin-style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<div class="admin-container">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <img src="../asset/DAYANGSARI ENT Transparent.png" alt="DAYANGSARI ENT Logo" class="logo-img">
+    </div>
+    <ul class="sidebar-menu">
+      <li><a href="admin.html">Dashboard</a></li>
+      <li><a href="admin-products.html">Products</a></li>
+      <li><a href="admin-orders.html">Orders</a></li>
+      <li><a href="admin-customers.html">Customers</a></li>
+      <li><a href="admin-analytics.html" class="active">Analytics</a></li>
+      <li><a href="admin-account.html">My Account</a></li>
+      <li class="logout-item"><a href="#logout" id="logout-btn">Log Out</a></li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="admin-main">
+    <section id="analytics">
+      <h1>Analytics & Reports</h1>
+
+      <!-- Time Range Selector -->
+      <div class="filter-bar">
+        <select id="time-range" class="filter-select">
+          <option value="7days">Last 7 Days</option>
+          <option value="30days" selected>Last 30 Days</option>
+          <option value="90days">Last 90 Days</option>
+          <option value="1year">Last Year</option>
+          <option value="custom">Custom Range</option>
+        </select>
+        <button class="btn-primary" id="download-report-btn">Download Report</button>
+      </div>
+
+      <!-- Charts Grid -->
+      <div class="charts-grid">
+        <div class="chart-container">
+          <h2>Sales Revenue</h2>
+          <canvas id="revenueChart"></canvas>
+        </div>
+
+        <div class="chart-container">
+          <h2>Orders Overview</h2>
+          <canvas id="ordersChart"></canvas>
+        </div>
+
+        <div class="chart-container">
+          <h2>Top Products</h2>
+          <canvas id="productsChart"></canvas>
+        </div>
+
+        <div class="chart-container">
+          <h2>Customer Growth</h2>
+          <canvas id="customersChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Performance Metrics -->
+      <div class="metrics-section">
+        <h2>Performance Metrics</h2>
+        <div class="cards-grid">
+          <div class="card">
+            <h3>Avg Order Value</h3>
+            <p>RM 0</p>
+            <span class="card-subtitle">↑ 0% from last month</span>
+          </div>
+          <div class="card">
+            <h3>Conversion Rate</h3>
+            <p>0%</p>
+            <span class="card-subtitle">↑ 0% from last month</span>
+          </div>
+          <div class="card">
+            <h3>Customer Retention</h3>
+            <p>0%</p>
+            <span class="card-subtitle">↑ 0% from last month</span>
+          </div>
+          <div class="card">
+            <h3>Revenue Growth</h3>
+            <p>0%</p>
+            <span class="card-subtitle">↑ 0% from last month</span>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </main>
+</div>
+
+<script type="module" src="admin.js"></script>
+
+</body>
+</html>
